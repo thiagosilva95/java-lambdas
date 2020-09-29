@@ -1,30 +1,13 @@
-import java.util.stream.IntStream;
+import java.util.Arrays;
+import java.util.List;
 
 public class JavaDebugLambda {
 
     public static void main(String[] args) {
+        List<Integer> list = Arrays.asList(1, 5, 9, 4, 1);
 
-        // API DE STREAM
-
-        // stream -> fluxo de dados
-
-        Runnable runnable = () -> System.out.println("string aqui");
-
-        IntStream.range(0, 5)
-                .filter(n -> n % 2 == 0)
-                .forEach(System.out::println);
-
-        IntStream.range(0, 5)
-                .filter((int n) -> n % 2 == 0)
-                .reduce((n1, n2) -> n1 + n2)
-                .ifPresent(System.out::println);
-
-        // chaves
-        IntStream.range(0, 5)
-                .filter((int n) -> {
-                    System.out.println("String aqui");
-                    return n % 2 == 0;
-                })
+        list.stream()
+                .map(n -> new StringBuilder().append(n).append("s").append("a"))
                 .forEach(System.out::println);
 
     }
