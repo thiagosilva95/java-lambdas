@@ -77,5 +77,14 @@ public class JavaStreamParallel {
                 );
         System.out.println(collect);
 
+        System.out.println("-----");
+
+        Map<Boolean, List<Integer>> groupingBy =
+                list.parallelStream()
+                        .collect(
+                                Collectors
+                                        .groupingByConcurrent(n -> n % 2 == 0) // mais performático que o toMap (thread safe, único mapa para todas as threads)
+                        );
+        System.out.println(groupingBy);
     }
 }
